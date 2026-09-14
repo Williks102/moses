@@ -1,0 +1,6 @@
+{
+  "name": "Coopérative M-Commodities",
+  "description": "Site officiel épuré de la coopérative agricole M-Commodities en Côte d'Ivoire. Découvrez nos cultures locales de cacao, café et noix de cajou cultivées de manière durable.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
