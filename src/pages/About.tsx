@@ -71,7 +71,7 @@ export default function About() {
 
           <div className="relative rounded-[32px] overflow-hidden border border-[#EAE5DF] shadow-md h-[400px]">
             <img
-              src="/src/assets/images/cocoa_beans_upload_1789393923659.jpg"
+              src="/assets/images/cocoa_beans_upload_1789393923659.jpg"
               alt="Histoire Moses Commodities"
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"

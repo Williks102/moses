@@ -15,7 +15,7 @@ export default function Home({ onNavigate }: HomeProps) {
         {/* Deep luxurious background image with gradient overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/src/assets/images/cocoa_beans_upload_1789393923659.jpg"
+            src="/assets/images/cocoa_beans_upload_1789393923659.jpg"
             alt="Champs de cacao de Côte d'Ivoire"
             className="w-full h-full object-cover opacity-35 scale-105"
             referrerPolicy="no-referrer"
@@ -77,7 +77,7 @@ export default function Home({ onNavigate }: HomeProps) {
               <div>
                 <div className="h-56 relative overflow-hidden">
                   <img
-                    src="/src/assets/images/cocoa_beans_upload_1789393923659.jpg"
+                    src="/assets/images/cocoa_beans_upload_1789393923659.jpg"
                     alt="Cacao fin"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     referrerPolicy="no-referrer"
@@ -111,7 +111,7 @@ export default function Home({ onNavigate }: HomeProps) {
               <div>
                 <div className="h-56 relative overflow-hidden">
                   <img
-                    src="/src/assets/images/m_commodities_coffee_1788199522255.jpg"
+                    src="/assets/images/m_commodities_coffee_1788199522255.jpg"
                     alt="Café Robusta"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     referrerPolicy="no-referrer"
@@ -145,7 +145,7 @@ export default function Home({ onNavigate }: HomeProps) {
               <div>
                 <div className="h-56 relative overflow-hidden">
                   <img
-                    src="/src/assets/images/m_commodities_cashew_1788199509590.jpg"
+                    src="/assets/images/m_commodities_cashew_1788199509590.jpg"
                     alt="Noix de Cajou"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     referrerPolicy="no-referrer"

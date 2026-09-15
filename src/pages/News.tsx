@@ -72,7 +72,7 @@ export default function News() {
           <div className="lg:col-span-5 h-64 md:h-80 rounded-2xl overflow-hidden bg-emerald-50 relative">
             <div className="absolute inset-0 bg-[#00A14C]/5" />
             <img
-              src="/src/assets/images/cocoa_beans_upload_1789393923659.jpg"
+              src="/assets/images/cocoa_beans_upload_1789393923659.jpg"
               alt="Actualités phares"
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
