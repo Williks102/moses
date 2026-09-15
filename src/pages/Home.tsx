@@ -15,7 +15,7 @@ export default function Home({ onNavigate }: HomeProps) {
         {/* Deep luxurious background image with gradient overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/assets/images/cocoa_beans_upload_1789393923659.jpg"
+            src="src/assets/images/cocoa_beans_upload_1789393923659.jpg"
             alt="Champs de cacao de Côte d'Ivoire"
             className="w-full h-full object-cover opacity-35 scale-105"
             referrerPolicy="no-referrer"
