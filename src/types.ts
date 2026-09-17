@@ -50,3 +50,13 @@ export interface CorporateProfile {
   secondaryOffice: string;
 }
 
+export interface NewsItem {
+  id: string;
+  title: string;
+  date: string; // ISO date string or comparable for sorting, e.g., '2026-09-15'
+  displayDate: string; // e.g. '15 Septembre 2026'
+  category: string;
+  description: string;
+  badgeColor: string;
+}
+

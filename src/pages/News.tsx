@@ -1,49 +1,10 @@
 import { Calendar, Heart, ShieldAlert, Award, Star, Compass, Trees } from 'lucide-react';
- 
-interface NewsItem {
-  id: string;
-  title: string;
-  date: string;
-  category: string;
-  description: string;
-  badgeColor: string;
-}
- 
+import { NEWS_DATA } from '../data';
+
 export default function News() {
-  const news: NewsItem[] = [
-    {
-      id: 'reforestation',
-      title: 'Planting et distribution de plants d\'ombrage aux producteurs',
-      date: '15 Septembre 2026',
-      category: 'Agroforesterie & Environnement',
-      description: 'Lancement officiel de notre grand programme d\'agroforesterie avec le planting et la distribution gratuite de milliers de plants d\'ombrage (essences forestières locales) à nos producteurs membres de Doba, Duékoué, Guiglo et Bloléquin. Cette initiative clé renforce la biodiversité, protège les cacaoyers du stress hydrique et garantit la pleine conformité aux nouvelles exigences environnementales internationales.',
-      badgeColor: 'bg-[#00A14C]/10 text-[#00A14C] border-[#00A14C]/25'
-    },
-    {
-      id: 'independence',
-      title: 'Célébration de la Fête Nationale de l\'Indépendance à Duékoué',
-      date: '22 Août 2024',
-      category: 'Vie Sociale & Communauté',
-      description: 'M-Commodities Coop-Ca a activement participé aux festivités de la fête nationale de l\'indépendance dans le département de Duékoué. Une occasion de renforcer la cohésion sociale entre nos producteurs membres, les leaders communautaires et les autorités administratives du Guémon pour un développement agricole harmonieux.',
-      badgeColor: 'bg-[#00A14C]/10 text-[#00A14C] border-[#00A14C]/20'
-    },
-    {
-      id: 'phytosanitary',
-      title: 'Donations de Produits Phytosanitaires aux Producteurs Membres',
-      date: '17 Août 2024',
-      category: 'Soutien Agricole',
-      description: 'Dans le cadre de notre programme annuel d\'appui aux planteurs, nous avons procédé à une importante distribution de produits phytosanitaires homologués et d\'équipements de protection individuelle (EPI) à Doba et Duékoué. Cet appui vise à protéger les vergers contre les maladies tout en enseignant les bonnes pratiques d\'application sécurisée.',
-      badgeColor: 'bg-[#8E4D31]/10 text-[#8E4D31] border-[#8E4D31]/20'
-    },
-    {
-      id: 'awareness',
-      title: 'Campagne de Sensibilisation sur la Durabilité et les Droits Humains',
-      date: '17 Août 2024',
-      category: 'Droits & Sensibilisation',
-      description: 'Tenue d\'ateliers de sensibilisation communautaire axés sur la lutte contre le travail des enfants, la promotion de l\'égalité des chances et la sécurité au travail dans nos sections de Doba, Guiglo et Bloléquin. M-Commodities réaffirme son engagement pour un cacao éthique et exempt de toute exploitation humaine.',
-      badgeColor: 'bg-[#C99A49]/10 text-[#C99A49] border-[#C99A49]/20'
-    }
-  ];
+  const news = [...NEWS_DATA].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
  
   const getIcon = (id: string) => {
     switch (id) {
@@ -246,7 +207,7 @@ export default function News() {
                   </span>
                   <div className="flex items-center space-x-1.5 text-[11px] font-sans text-[#7C7265]">
                     <Calendar className="w-3.5 h-3.5" />
-                    <span>{item.date}</span>
+                    <span>{item.displayDate}</span>
                   </div>
                 </div>
  

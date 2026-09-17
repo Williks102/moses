@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { ArrowRight, Leaf, Shield, Heart, Trees, Award, Landmark, TrendingUp, Calendar } from 'lucide-react';
-import { ACHIEVEMENTS_DATA } from '../data';
+import { ACHIEVEMENTS_DATA, NEWS_DATA } from '../data';
 import PartnersSection from '../components/PartnersSection';
 
 interface HomeProps {
@@ -8,6 +8,10 @@ interface HomeProps {
 }
 
 export default function Home({ onNavigate }: HomeProps) {
+  const sortedNews = [...NEWS_DATA]
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 3);
+
   return (
     <div className="pt-20">
       {/* Premium Hero Carousel-style Section */}
@@ -271,95 +275,36 @@ export default function Home({ onNavigate }: HomeProps) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Actu 1 */}
-            <div className="group bg-white rounded-2xl border border-[#EAE5DF] hover:border-[#C99A49] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden">
-              <div className="p-6 space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-sans font-semibold text-[#00A14C] bg-[#00A14C]/10 border border-[#00A14C]/25 px-2.5 py-1 rounded-full">
-                    Vie Sociale & Communauté
-                  </span>
-                  <div className="flex items-center text-[11px] font-sans text-[#7C7265] space-x-1.5">
-                    <Calendar className="w-3.5 h-3.5 text-[#8E4D31]" />
-                    <span>22 Août 2024</span>
+            {sortedNews.map((item) => (
+              <div key={item.id} className="group bg-white rounded-2xl border border-[#EAE5DF] hover:border-[#00A14C]/30 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden">
+                <div className="p-6 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className={`text-[11px] font-sans font-semibold px-2.5 py-1 rounded-full border ${item.badgeColor}`}>
+                      {item.category}
+                    </span>
+                    <div className="flex items-center text-[11px] font-sans text-[#7C7265] space-x-1.5">
+                      <Calendar className="w-3.5 h-3.5 text-[#8E4D31]" />
+                      <span>{item.displayDate}</span>
+                    </div>
                   </div>
+                  <h3 className="text-lg font-serif font-bold text-[#5C3E35] group-hover:text-[#00A14C] transition-colors leading-snug line-clamp-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs md:text-sm font-sans text-[#5C544C] leading-relaxed line-clamp-3">
+                    {item.description}
+                  </p>
                 </div>
-                <h3 className="text-lg font-serif font-bold text-[#5C3E35] group-hover:text-[#D32F2F] transition-colors leading-snug">
-                  Célébration de la Fête Nationale à Duékoué
-                </h3>
-                <p className="text-xs md:text-sm font-sans text-[#5C544C] leading-relaxed line-clamp-3">
-                  M-Commodities Coop-Ca a activement participé aux festivités de la fête nationale de l'indépendance dans le département de Duékoué. Une occasion de renforcer la cohésion sociale entre nos producteurs membres et les leaders communautaires.
-                </p>
-              </div>
-              <div className="p-6 pt-0">
-                <button
-                  onClick={() => onNavigate('news')}
-                  className="text-xs font-sans font-bold text-[#D32F2F] uppercase tracking-wider flex items-center space-x-1.5 group-hover:translate-x-1 transition-transform"
-                >
-                  <span>Lire la suite</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            </div>
-
-            {/* Actu 2 */}
-            <div className="group bg-white rounded-2xl border border-[#EAE5DF] hover:border-[#C99A49] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden">
-              <div className="p-6 space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-sans font-semibold text-[#8E4D31] bg-[#8E4D31]/10 border border-[#8E4D31]/25 px-2.5 py-1 rounded-full">
-                    Soutien Agricole
-                  </span>
-                  <div className="flex items-center text-[11px] font-sans text-[#7C7265] space-x-1.5">
-                    <Calendar className="w-3.5 h-3.5 text-[#8E4D31]" />
-                    <span>17 Août 2024</span>
-                  </div>
+                <div className="p-6 pt-0">
+                  <button
+                    onClick={() => onNavigate('news')}
+                    className="text-xs font-sans font-bold text-[#D32F2F] uppercase tracking-wider flex items-center space-x-1.5 group-hover:translate-x-1 transition-transform"
+                  >
+                    <span>Lire la suite</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
                 </div>
-                <h3 className="text-lg font-serif font-bold text-[#5C3E35] group-hover:text-[#D32F2F] transition-colors leading-snug">
-                  Donations de Produits aux Producteurs Membres
-                </h3>
-                <p className="text-xs md:text-sm font-sans text-[#5C544C] leading-relaxed line-clamp-3">
-                  Dans le cadre de notre programme d'appui aux planteurs, nous avons procédé à une importante distribution de produits phytosanitaires homologués et d'équipements de protection individuelle (EPI) à Doba et Duékoué.
-                </p>
               </div>
-              <div className="p-6 pt-0">
-                <button
-                  onClick={() => onNavigate('news')}
-                  className="text-xs font-sans font-bold text-[#D32F2F] uppercase tracking-wider flex items-center space-x-1.5 group-hover:translate-x-1 transition-transform"
-                >
-                  <span>Lire la suite</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            </div>
-
-            {/* Actu 3 */}
-            <div className="group bg-white rounded-2xl border border-[#EAE5DF] hover:border-[#C99A49] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden">
-              <div className="p-6 space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-sans font-semibold text-[#C99A49] bg-[#C99A49]/10 border border-[#C99A49]/25 px-2.5 py-1 rounded-full">
-                    Droits & Sensibilisation
-                  </span>
-                  <div className="flex items-center text-[11px] font-sans text-[#7C7265] space-x-1.5">
-                    <Calendar className="w-3.5 h-3.5 text-[#8E4D31]" />
-                    <span>17 Août 2024</span>
-                  </div>
-                </div>
-                <h3 className="text-lg font-serif font-bold text-[#5C3E35] group-hover:text-[#D32F2F] transition-colors leading-snug">
-                  Campagne de Sensibilisation sur la Durabilité
-                </h3>
-                <p className="text-xs md:text-sm font-sans text-[#5C544C] leading-relaxed line-clamp-3">
-                  Tenue d'ateliers de sensibilisation communautaire axés sur la lutte contre le travail des enfants, la promotion de l'égalité des chances et la sécurité au travail dans nos sections de Doba, Guiglo et Bloléquin.
-                </p>
-              </div>
-              <div className="p-6 pt-0">
-                <button
-                  onClick={() => onNavigate('news')}
-                  className="text-xs font-sans font-bold text-[#D32F2F] uppercase tracking-wider flex items-center space-x-1.5 group-hover:translate-x-1 transition-transform"
-                >
-                  <span>Lire la suite</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            </div>
+            ))}
           </div>
 
         </div>
