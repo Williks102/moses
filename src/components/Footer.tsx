@@ -70,6 +70,14 @@ export default function Footer({ onNavigate }: FooterProps) {
                   Nos Produits
                 </button>
               </li>
+              <li>
+                <button 
+                  onClick={() => window.dispatchEvent(new CustomEvent('open-brochure'))} 
+                  className="hover:text-[#00A14C] text-left cursor-pointer transition-colors font-semibold text-[#00A14C]"
+                >
+                  Télécharger Brochure
+                </button>
+              </li>
             </ul>
           </div>
 

@@ -149,6 +149,14 @@ export default function Header({ activeSection, onNavigate }: HeaderProps) {
             </AnimatePresence>
           </div>
 
+          {/* Notre Brochure Button */}
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent('open-brochure'))}
+            className="px-4 py-2.5 rounded-full border border-[#00A14C] hover:bg-[#00A14C]/5 text-[#00A14C] text-xs font-sans font-semibold tracking-wider uppercase transition-all duration-300 shadow-sm cursor-pointer flex items-center space-x-1.5"
+          >
+            <span>Notre Brochure</span>
+          </button>
+
           {/* Premium CTA Button */}
           <button
             onClick={() => handleNavClick('contact')}
@@ -245,6 +253,15 @@ export default function Header({ activeSection, onNavigate }: HeaderProps) {
             </div>
 
             <div className="space-y-4">
+              <button
+                onClick={() => {
+                  setIsOpen(false);
+                  window.dispatchEvent(new CustomEvent('open-brochure'));
+                }}
+                className="w-full text-center px-6 py-3 rounded-full border border-[#00A14C] hover:bg-[#00A14C]/5 text-[#00A14C] text-sm font-sans font-bold tracking-wider uppercase transition-colors"
+              >
+                Notre Brochure
+              </button>
               <button
                 onClick={() => handleNavClick('contact')}
                 className="w-full text-center px-6 py-3.5 rounded-full bg-[#D32F2F] hover:bg-[#B71C1C] text-white text-sm font-sans font-bold tracking-wider uppercase transition-colors shadow-md"

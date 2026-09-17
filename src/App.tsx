@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import BrochureModal from './components/BrochureModal';
 
 // Pages
 import Home from './pages/Home';
@@ -13,6 +14,8 @@ import Contact from './pages/Contact';
 
 export default function App() {
   const [activePage, setActivePage] = useState('home');
+  const [isBrochureOpen, setIsBrochureOpen] = useState(false);
+  const [autoDownload, setAutoDownload] = useState(false);
 
   // Listen to hash changes for true multi-page navigation behavior
   useEffect(() => {
@@ -37,6 +40,21 @@ export default function App() {
     handleHashChange();
 
     return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  // Listen to global open-brochure events
+  useEffect(() => {
+    const handleOpenBrochure = (e: Event) => {
+      const customEvent = e as CustomEvent<{ autoDownload?: boolean }>;
+      setIsBrochureOpen(true);
+      if (customEvent.detail && customEvent.detail.autoDownload) {
+        setAutoDownload(true);
+      } else {
+        setAutoDownload(false);
+      }
+    };
+    window.addEventListener('open-brochure', handleOpenBrochure);
+    return () => window.removeEventListener('open-brochure', handleOpenBrochure);
   }, []);
 
   const handleNavigate = (pageId: string) => {
@@ -86,6 +104,13 @@ export default function App() {
 
       {/* Footer & Certifications Summary */}
       <Footer onNavigate={handleNavigate} />
+
+      {/* Global Brochure Modal */}
+      <AnimatePresence>
+        {isBrochureOpen && (
+          <BrochureModal isOpen={isBrochureOpen} onClose={() => setIsBrochureOpen(false)} autoDownload={autoDownload} />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

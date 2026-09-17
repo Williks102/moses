@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { ArrowRight, Leaf, Shield, Heart, Trees, Award, Landmark, TrendingUp, Calendar } from 'lucide-react';
+import { ArrowRight, Leaf, Shield, Heart, Trees, Award, Landmark, TrendingUp, Calendar, BookOpen, Download } from 'lucide-react';
 import { ACHIEVEMENTS_DATA, NEWS_DATA } from '../data';
 import PartnersSection from '../components/PartnersSection';
 
@@ -307,6 +307,78 @@ export default function Home({ onNavigate }: HomeProps) {
             ))}
           </div>
 
+        </div>
+      </section>
+
+      {/* Interactive Brochure Download Section */}
+      <section className="py-20 bg-[#F2ECE4]/40 border-y border-[#EAE5DF]">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="bg-white border border-[#EAE5DF] rounded-[32px] p-8 md:p-12 shadow-sm hover:shadow-md transition-shadow duration-300 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            
+            {/* Visual preview of the brochure */}
+            <div className="lg:col-span-5 relative flex justify-center">
+              <div className="relative w-full max-w-sm aspect-[4/3] rounded-2xl overflow-hidden border border-[#EAE5DF] shadow-lg bg-[#FAF8F5] p-6 space-y-4 flex flex-col justify-between">
+                <div className="flex justify-between items-start">
+                  <div className="w-10 h-10 rounded-full bg-[#00A14C] flex items-center justify-center text-[#F5F2EB]">
+                    <Leaf className="w-5 h-5 text-[#C99A49]" />
+                  </div>
+                  <span className="text-[9px] font-sans font-bold text-[#8E4D31] tracking-widest uppercase bg-[#8E4D31]/10 px-2 py-0.5 rounded">
+                    Coopérative
+                  </span>
+                </div>
+                
+                <div className="space-y-2">
+                  <h4 className="text-xl font-serif font-bold text-[#5C3E35] leading-tight">
+                    Moses Commodities
+                  </h4>
+                  <p className="text-xs font-serif italic text-[#7C7265]">
+                    « Valuing our lands, feeding the world »
+                  </p>
+                </div>
+
+                <div className="pt-4 border-t border-[#EAE5DF] flex justify-between items-center text-[9px] font-sans text-[#7C7265]">
+                  <span>Siège : DOBA, SAN-PEDRO</span>
+                  <span className="font-bold text-[#00A14C]">Brochure Officielle</span>
+                </div>
+              </div>
+              
+              {/* Decorative accent behind */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-[#00A14C]/5 to-[#C99A49]/5 rounded-3xl blur-xl -z-10" />
+            </div>
+
+            {/* Informational content */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="space-y-3">
+                <span className="text-[10px] font-sans font-bold uppercase tracking-widest text-[#8E4D31] bg-[#8E4D31]/10 px-3 py-1 rounded-full w-fit block">
+                  Document Officiel d'Information
+                </span>
+                <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#5C3E35] leading-snug">
+                  Consultez et Téléchargez Notre Brochure Institutionnelle
+                </h3>
+                <p className="text-sm font-sans text-[#5C544C] leading-relaxed">
+                  Découvrez l'ensemble de nos activités, chiffres clés, engagements HSE (Hygiène, Sécurité, Environnement), ambitions de transformation locale et nos informations juridiques complètes dans notre brochure officielle.
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button
+                  onClick={() => window.dispatchEvent(new CustomEvent('open-brochure'))}
+                  className="px-6 py-3.5 rounded-full bg-[#00A14C] hover:bg-[#008A41] text-white text-xs font-sans font-bold tracking-wider uppercase transition-all duration-300 shadow-sm flex items-center justify-center space-x-2 hover:scale-[1.02] cursor-pointer"
+                >
+                  <BookOpen className="w-4 h-4" />
+                  <span>Consulter en ligne</span>
+                </button>
+                <button
+                  onClick={() => window.dispatchEvent(new CustomEvent('open-brochure', { detail: { autoDownload: true } }))}
+                  className="px-6 py-3.5 rounded-full border border-[#EAE5DF] hover:bg-[#F2ECE4] text-[#5C3E35] text-xs font-sans font-bold tracking-wider uppercase transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer"
+                >
+                  <Download className="w-4 h-4" />
+                  <span>Télécharger en un clic</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
         </div>
       </section>
 
